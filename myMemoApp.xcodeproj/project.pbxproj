@@ -13,6 +13,9 @@
 		C4D7A4BE2B3001BC00D0E2B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4D7A4BC2B3001BC00D0E2B5 /* Main.storyboard */; };
 		C4D7A4C02B3001BE00D0E2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4D7A4BF2B3001BE00D0E2B5 /* Assets.xcassets */; };
 		C4D7A4C32B3001BE00D0E2B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4D7A4C12B3001BE00D0E2B5 /* LaunchScreen.storyboard */; };
+		C4D7A4CD2B3016A400D0E2B5 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D7A4CC2B3016A400D0E2B5 /* TableViewController.swift */; };
+		C4D7A4CF2B3016CD00D0E2B5 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D7A4CE2B3016CD00D0E2B5 /* AddViewController.swift */; };
+		C4D7A4D12B3016E700D0E2B5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D7A4D02B3016E700D0E2B5 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		C4D7A4BF2B3001BE00D0E2B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4D7A4C22B3001BE00D0E2B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4D7A4C42B3001BE00D0E2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4D7A4CC2B3016A400D0E2B5 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		C4D7A4CE2B3016CD00D0E2B5 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		C4D7A4D02B3016E700D0E2B5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				C4D7A4BF2B3001BE00D0E2B5 /* Assets.xcassets */,
 				C4D7A4C12B3001BE00D0E2B5 /* LaunchScreen.storyboard */,
 				C4D7A4C42B3001BE00D0E2B5 /* Info.plist */,
+				C4D7A4CC2B3016A400D0E2B5 /* TableViewController.swift */,
+				C4D7A4CE2B3016CD00D0E2B5 /* AddViewController.swift */,
+				C4D7A4D02B3016E700D0E2B5 /* DetailViewController.swift */,
 			);
 			path = myMemoApp;
 			sourceTree = "<group>";
@@ -138,9 +147,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4D7A4CF2B3016CD00D0E2B5 /* AddViewController.swift in Sources */,
 				C4D7A4BB2B3001BB00D0E2B5 /* ViewController.swift in Sources */,
 				C4D7A4B72B3001BB00D0E2B5 /* AppDelegate.swift in Sources */,
+				C4D7A4D12B3016E700D0E2B5 /* DetailViewController.swift in Sources */,
 				C4D7A4B92B3001BB00D0E2B5 /* SceneDelegate.swift in Sources */,
+				C4D7A4CD2B3016A400D0E2B5 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
