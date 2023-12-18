@@ -9,15 +9,21 @@ import UIKit
 
 class DetailViewController: UIViewController {
     var receiveItem = ""
+    var receiveContent = ""
     
-    @IBOutlet var detailViewLabel: UILabel!
+    @IBOutlet weak var detailViewLabel: UILabel!
+    @IBOutlet weak var detailTodoContent: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         detailViewLabel.text = receiveItem
+        detailViewLabel.sizeToFit() //텍스트 사이즈에 맞춰서 Label 크기 맞춤
+        detailTodoContent.text = receiveContent
+        detailTodoContent.sizeToFit()
     }
-    func receiveItem(_ item: String){
-        receiveItem = item
+    func receiveItem(_ title: String, _ content: String){
+        receiveItem = title
+        receiveContent = content
     }
 }
