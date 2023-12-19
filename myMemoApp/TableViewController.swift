@@ -72,5 +72,5 @@ class TableViewController: UITableViewController {
             detailView.receiveItem(list[((indexPath as NSIndexPath?)?.row)!].title, list[((indexPath as NSIndexPath?)?.row)!].todoContent)
         }
     }
-
+    
 }
