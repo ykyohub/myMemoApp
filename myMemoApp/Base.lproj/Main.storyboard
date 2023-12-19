@@ -24,6 +24,18 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HRM-cR-NJe" id="Hqy-au-lrw">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFg-HW-eYd">
+                                            <rect key="frame" x="336" y="2" width="39" height="38"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="" backgroundImage="checkboxUnchecked"/>
+                                            <state key="selected" backgroundImage="checkboxChecked"/>
+                                            <connections>
+                                                <action selector="checkboxButton:" destination="qfU-fV-2Er" eventType="touchUpInside" id="Jwt-D1-A1f"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="mK2-Di-Wxd" kind="show" identifier="sgDetail" id="sNt-KS-e6Y"/>
@@ -50,7 +62,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYG-pa-Mc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1539.6946564885495" y="-35.211267605633807"/>
+            <point key="canvasLocation" x="1538.4000000000001" y="-35.467980295566505"/>
         </scene>
         <!--Detail To do-->
         <scene sceneID="7K2-nt-Rk2">
@@ -80,16 +92,7 @@
                         <viewLayoutGuide key="safeArea" id="xSR-BY-Pw3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Detail To do" id="GNM-lA-xDD">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Xds-e5-BoX">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="5tW-ya-zA0">
-                                <rect key="frame" x="-37" y="-17" width="83" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Button"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Detail To do" id="GNM-lA-xDD"/>
                     <connections>
                         <outlet property="detailTodoContent" destination="Plc-BN-7sT" id="7ph-Xk-ywf"/>
                         <outlet property="detailViewLabel" destination="kYe-pH-7mu" id="ukE-hc-7Qh"/>
@@ -165,6 +168,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkboxChecked" width="512" height="512"/>
+        <image name="checkboxUnchecked" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

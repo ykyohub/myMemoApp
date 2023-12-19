@@ -72,5 +72,12 @@ class TableViewController: UITableViewController {
             detailView.receiveItem(list[((indexPath as NSIndexPath?)?.row)!].title, list[((indexPath as NSIndexPath?)?.row)!].todoContent)
         }
     }
+    @IBAction func checkboxButton(_ sender: UIButton) {
+        if sender.isSelected{
+            sender.isSelected = false
+        }else {
+            sender.isSelected = true
+        }
+    }
     
 }
