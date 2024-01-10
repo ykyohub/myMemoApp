@@ -7,31 +7,34 @@
 
 import UIKit
 
-struct Todo{
-    var title: String
-    var todoContent: String
-    var iscompleted: Bool
+struct Todo: Codable{
+    let title: String
+    let todoContent: String
+    let iscompleted: Bool
 }
-var todo1 = Todo(title: "강의 수강", todoContent: "앱개발 종합반 강의 전체 수강 및 TIL 작성 등등...앱개발 종합반 강의 전체 수강 및 TIL 작성 등등...앱개발 종합반 강의 전체 수강 및 TIL 작성 등등...앱개발 종합반 강의 전체 수강 및 TIL 작성 등등...앱개발 종합반 강의 전체 수강 및 TIL 작성 등등...", iscompleted: false)
-var todo2 = Todo(title: "메모 앱 초기개발",todoContent: "강의 다 들으면 메모 앱 만들기 과제 진행할 것", iscompleted: false)
-var list:[Todo] = [todo1, todo2]
+var todoList: [Todo] = [Todo(title: "초기", todoContent: "메모앱 개발", iscompleted: false)]
 
-class TableViewController: UITableViewController {
-
-    @IBOutlet var listView: UITableView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+class TableViewController: UITableViewController, AddProtocol {
+    func addList(title: String, content: String) {
+        let add = Todo(title: title, todoContent: content, iscompleted: false)
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(add) {
+            UserDefaults.standard.set(encoded, forKey: "todoList")
+        }
+    }
+    @IBAction func tappedAddButton(_ sender: Any) {
+        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "showAddToDo") as? AddViewController else { return }
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
-    //좌측 상단 Edit (목록 삭제)
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            list.remove(at: (indexPath as NSIndexPath).row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+    @IBOutlet var listView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        saveList()
+        addList()
+        loadList()
     }
     
     //뷰가 노출될 때마다 리스트 데이터 다시 불러옴
@@ -47,37 +50,46 @@ class TableViewController: UITableViewController {
         }
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return list.count
+        return todoList.count
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         
-        cell.textLabel?.text = list[indexPath.row].title
+        cell.textLabel?.text = todoList[indexPath.row].title
         
         return cell
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "sgDetail" {
-            let cell = sender as! UITableViewCell
-            let indexPath = self.tableView.indexPath(for: cell)
-            let detailView = segue.destination as! DetailViewController
-            detailView.receiveItem(list[((indexPath as NSIndexPath?)?.row)!].title, list[((indexPath as NSIndexPath?)?.row)!].todoContent)
-        }
-    }
-    @IBAction func checkboxButton(_ sender: UIButton) {
-        if sender.isSelected{
-            sender.isSelected = false
-        }else {
-            sender.isSelected = true
+    
+    private func saveList() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(todoList) {
+            UserDefaults.standard.set(encoded, forKey: "todoList")
         }
     }
     
+    private func loadList() {
+        guard let storedData = UserDefaults.standard.value(forKey: "todoList"),
+              let decodedList = try? JSONDecoder().decode(Todo.self, from: storedData as! Data) else { return }
+        
+        todoList.append(decodedList)
+        print(decodedList)
+        
+    }
+    
+    private func addList() {
+        let add = Todo(title: "추가 할 일", todoContent: "밥 먹기...", iscompleted: false)
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(add) {
+            UserDefaults.standard.set(encoded, forKey: "todoList")
+        }
+    }
+    
+    private func deleteList() {
+        UserDefaults.standard.removeObject(forKey: "todoList")
+        todoList = []
+        saveList()
+    }
 }

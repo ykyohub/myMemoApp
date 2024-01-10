@@ -12,7 +12,7 @@
         <!--My To do List-->
         <scene sceneID="EIe-W6-LgP">
             <objects>
-                <tableViewController id="qfU-fV-2Er" customClass="TableViewController" customModule="myMemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="showAddToDo" id="qfU-fV-2Er" customClass="TableViewController" customModule="myMemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ZQ1-v3-0k1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,16 +25,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFg-HW-eYd">
-                                            <rect key="frame" x="336" y="2" width="39" height="38"/>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UiK-fP-yJF">
+                                            <rect key="frame" x="317" y="6" width="49" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" title="" backgroundImage="checkboxUnchecked"/>
-                                            <state key="selected" backgroundImage="checkboxChecked"/>
-                                            <connections>
-                                                <action selector="checkboxButton:" destination="qfU-fV-2Er" eventType="touchUpInside" id="Jwt-D1-A1f"/>
-                                            </connections>
-                                        </button>
+                                        </switch>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -51,13 +45,14 @@
                     <navigationItem key="navigationItem" title="My To do List" id="mdL-ee-gc1">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YsE-nB-fhP">
                             <connections>
-                                <segue destination="Dtd-Eh-xZW" kind="show" id="4D4-Rw-VP3"/>
+                                <action selector="tappedAddButton:" destination="qfU-fV-2Er" id="HkH-tN-ffp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="listView" destination="ZQ1-v3-0k1" id="0b5-AB-oGt"/>
+                        <segue destination="Dtd-Eh-xZW" kind="show" identifier="showAddToDo" id="5AH-yz-qXK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYG-pa-Mc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -105,7 +100,7 @@
         <!--Add To do-->
         <scene sceneID="5Nw-2P-9dx">
             <objects>
-                <viewController id="Dtd-Eh-xZW" customClass="AddViewController" customModule="myMemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showAddToDo" id="Dtd-Eh-xZW" customClass="AddViewController" customModule="myMemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9y0-jk-OZN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,12 +110,19 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="addTitleTextField:" destination="f76-0i-ISO" eventType="editingDidEnd" id="Kqs-nB-7Z2"/>
+                                    <action selector="titleTextField:" destination="f76-0i-ISO" eventType="editingDidEnd" id="Ack-5J-kOT"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="내용을 입력해주세요. . ." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kuT-a7-JPe">
                                 <rect key="frame" x="16" y="159" width="343" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="contentTextField:" destination="f76-0i-ISO" eventType="editingDidEnd" id="W3U-1g-JJz"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dGB-oY-wQv"/>
@@ -137,6 +139,9 @@
                                     <action selector="tappedAddButton:" destination="Dtd-Eh-xZW" eventType="touchUpInside" id="XKc-FZ-I16"/>
                                 </connections>
                             </button>
+                            <connections>
+                                <action selector="tappedAddButton:" destination="Dtd-Eh-xZW" id="5mu-er-2DY"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -145,8 +150,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OkS-As-db4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="f76-0i-ISO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2426.4000000000001" y="-286.69950738916259"/>
+            <point key="canvasLocation" x="2426" y="-288"/>
         </scene>
         <!--To do List-->
         <scene sceneID="nBK-BL-ykj">
@@ -168,8 +174,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkboxChecked" width="512" height="512"/>
-        <image name="checkboxUnchecked" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -3,4 +3,115 @@
    uuid = "A81E7317-3D54-45C8-ADBB-BE68BC587AE6"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF9F571C-4F58-47F1-957E-004B9FEEA1A0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myMemoApp/TableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "addList(title:content:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AF9F571C-4F58-47F1-957E-004B9FEEA1A0 - 361c4c61b991a2a0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myMemoApp.TableViewController.addViewController.getter : myMemoApp.AddViewController"
+                  moduleName = "myMemoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoonkyuho/Desktop/myMemoApp/myMemoApp/TableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "AF9F571C-4F58-47F1-957E-004B9FEEA1A0 - 755abd5a43036c7d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myMemoApp.TableViewController.init(style: __C.UITableViewStyle) -&gt; myMemoApp.TableViewController"
+                  moduleName = "myMemoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoonkyuho/Desktop/myMemoApp/myMemoApp/TableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "AF9F571C-4F58-47F1-957E-004B9FEEA1A0 - 871b44789418c1c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myMemoApp.TableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; myMemoApp.TableViewController"
+                  moduleName = "myMemoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoonkyuho/Desktop/myMemoApp/myMemoApp/TableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "AF9F571C-4F58-47F1-957E-004B9FEEA1A0 - 6f743c244aa7170d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myMemoApp.TableViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;myMemoApp.TableViewController&gt;"
+                  moduleName = "myMemoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoonkyuho/Desktop/myMemoApp/myMemoApp/TableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "AF9F571C-4F58-47F1-957E-004B9FEEA1A0 - a2e4550917ceda03"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myMemoApp.TableViewController.addList(title: Swift.String, content: Swift.String) -&gt; ()"
+                  moduleName = "myMemoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoonkyuho/Desktop/myMemoApp/myMemoApp/TableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "104">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1E1BDB40-E3DB-4697-99DB-D3FD7EDC07D7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myMemoApp/AddViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "tappedAddButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

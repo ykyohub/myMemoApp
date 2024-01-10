@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C486B3E02B4EA1740067A291 /* AddListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C486B3DF2B4EA1740067A291 /* AddListTableViewCell.swift */; };
 		C4D7A4B72B3001BB00D0E2B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D7A4B62B3001BB00D0E2B5 /* AppDelegate.swift */; };
 		C4D7A4B92B3001BB00D0E2B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D7A4B82B3001BB00D0E2B5 /* SceneDelegate.swift */; };
 		C4D7A4BB2B3001BB00D0E2B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D7A4BA2B3001BB00D0E2B5 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C486B3DF2B4EA1740067A291 /* AddListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListTableViewCell.swift; sourceTree = "<group>"; };
 		C4D7A4B32B3001BB00D0E2B5 /* myMemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4D7A4B62B3001BB00D0E2B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4D7A4B82B3001BB00D0E2B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				C4D7A4CC2B3016A400D0E2B5 /* TableViewController.swift */,
 				C4D7A4CE2B3016CD00D0E2B5 /* AddViewController.swift */,
 				C4D7A4D02B3016E700D0E2B5 /* DetailViewController.swift */,
+				C486B3DF2B4EA1740067A291 /* AddListTableViewCell.swift */,
 			);
 			path = myMemoApp;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 				C4D7A4CF2B3016CD00D0E2B5 /* AddViewController.swift in Sources */,
 				C4D7A4BB2B3001BB00D0E2B5 /* ViewController.swift in Sources */,
 				C4D7A4B72B3001BB00D0E2B5 /* AppDelegate.swift in Sources */,
+				C486B3E02B4EA1740067A291 /* AddListTableViewCell.swift in Sources */,
 				C4D7A4D12B3016E700D0E2B5 /* DetailViewController.swift in Sources */,
 				C4D7A4B92B3001BB00D0E2B5 /* SceneDelegate.swift in Sources */,
 				C4D7A4CD2B3016A400D0E2B5 /* TableViewController.swift in Sources */,
