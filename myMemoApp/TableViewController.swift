@@ -8,13 +8,15 @@
 import UIKit
 
 struct Todo: Codable{
-    let id: Int
-    let category: String
-    let todoContent: String
-    let iscompleted: Bool
+    var id: Int
+    var category: String
+    var todoContent: String
+    var iscompleted: Bool
 }
 var todoList: [Todo] = [Todo(id: 0, category: "공부", todoContent: "메모앱 개발", iscompleted: false),
-                        Todo(id: 1, category: "놀기", todoContent: "놀러가기", iscompleted: false)]
+                        Todo(id: 1, category: "공부", todoContent: "앱 강의 수강", iscompleted: false),
+                        Todo(id: 2, category: "놀기", todoContent: "풋살", iscompleted: false),
+                        Todo(id: 3, category: "놀기", todoContent: "여행", iscompleted: false)]
 
 var sections: [String: [Todo]] = [:]
 var userDefault = UserDefaults.standard
@@ -34,12 +36,13 @@ class TableViewController: UITableViewController, AddProtocol, EditProtocol {
             let cell = sender as! AddListTableViewCell
             let indexPath = self.tableView.indexPath(for: cell)
             let detailView = segue.destination as! DetailViewController
-            detailView.receiveItem(todoList[((indexPath as NSIndexPath?)?.row)!].category, todoList[((indexPath as NSIndexPath?)?.row)!].todoContent)
+            detailView.receiveItem(todoList[((indexPath as NSIndexPath?)?.row)!].id, todoList[((indexPath as NSIndexPath?)?.row)!].category, todoList[((indexPath as NSIndexPath?)?.row)!].todoContent)
         
             let detail = Array(sections.keys)[indexPath!.section]
             if let todosInSection = sections[detail] {
                 let todo = todosInSection[indexPath!.row]
-                detailView.receiveItem(todo.category, todo.todoContent)
+                detailView.receiveItem(todo.id, todo.category, todo.todoContent)
+                print("dudldldldl", todo.id)
             }
             detailView.delegate = self
             
@@ -50,8 +53,15 @@ class TableViewController: UITableViewController, AddProtocol, EditProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
         
+        setSection()
+        
+        listView.delegate = self
+        listView.dataSource = self
+    }
+    
+    func setSection() {
+        sections = [:]
         for todo in todoList {
             if sections[todo.category] == nil {
                 sections[todo.category] = [todo]
@@ -59,32 +69,36 @@ class TableViewController: UITableViewController, AddProtocol, EditProtocol {
                 sections[todo.category]?.append(todo)
             }
         }
-        
-        listView.delegate = self
-        listView.dataSource = self
     }
     
     func addList(category: String, content: String) {
         
         let add = Todo(id: (todoList.last?.id ?? -1) + 1, category: category, todoContent: content, iscompleted: false)
-            
+        
         if var existingCategory = sections[category] {
             existingCategory.append(add)
             sections[category] = existingCategory
+            todoList.append(add)
         } else {
             sections[category] = [add]
+            todoList.append(add)
         }
         
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(todoList) {
-            UserDefaults.standard.set(encoded, forKey: "todoList")
+            userDefault.set(encoded, forKey: "todoList")
         }
         listView.reloadData()
+        print("todoList.last.id : ", todoList.last?.id ?? "xxxxxx")
     }
     
-    func editList(category: String, content: String) {
-        print("editList 실행 !: ", category, content)
-        //여기 부터 다시 수정할 것 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    func editList(id: Int, category: String, content: String) {
+        print("editList 실행 !: ", id, category, content)
+        
+        todoList[id] = Todo(id: id, category: category, todoContent: content, iscompleted: false)
+        setSection()
+        
+        listView.reloadData()
     }
     
     //뷰가 노출될 때마다 리스트 데이터 다시 불러옴
@@ -94,9 +108,19 @@ class TableViewController: UITableViewController, AddProtocol, EditProtocol {
     
     //Edit 도중, AddViewController 로 이동시 편집중단
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if isEditing {
-            setEditing(false, animated: true)
+        // ? ? ? ? ? ? ?
+        print(#function)
+    }
+    
+    // 삭제 기능
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            userDefault.removeObject(forKey: "\(todoList[indexPath.row].id)")
+            sections[todoList[indexPath.row].category]?.remove(at: indexPath.row)
+            todoList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
         }
     }
     

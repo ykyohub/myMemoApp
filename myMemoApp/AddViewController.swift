@@ -43,6 +43,7 @@ class AddViewController: UIViewController {
                 self.addCategoryTextField.text = ""
                 self.addContentTextField.text = ""
             })
+            //pop
             self.present(alert, animated: true, completion: nil)
         }
     }

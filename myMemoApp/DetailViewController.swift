@@ -8,18 +8,19 @@
 import UIKit
 
 protocol EditProtocol {
-    func editList(category: String, content: String)
+    func editList(id: Int, category: String, content: String)
 }
 
 class DetailViewController: UIViewController, EditProtocol {
-    func editList(category: String, content: String) {
+    func editList(id:Int, category: String, content: String) {
         
     }
     
     
     var delegate: EditProtocol?
-    var receiveItem = ""
-    var receiveContent = ""
+    var receiveID: Int?
+    var receiveItem: String?
+    var receiveContent: String?
     
     @IBOutlet weak var detailViewLabel: UILabel!
     @IBOutlet weak var detailTodoContent: UILabel!
@@ -35,7 +36,8 @@ class DetailViewController: UIViewController, EditProtocol {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(DetailViewController.editButton))
     }
     
-    func receiveItem(_ category: String, _ content: String){
+    func receiveItem(_ id: Int, _ category: String, _ content: String){
+        receiveID = id
         receiveItem = category
         receiveContent = content
     }
@@ -55,11 +57,8 @@ class DetailViewController: UIViewController, EditProtocol {
         let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
             if let categoryEditedText = alertController.textFields?[0].text, 
                let todoContentEditedText = alertController.textFields?[1].text {
-                
-                self.delegate?.editList(category: categoryEditedText, content: todoContentEditedText)
-                
-                print("첫 번째 텍스트: \(categoryEditedText)")
-                print("두 번째 텍스트: \(todoContentEditedText)")
+                print("self.receiveID")
+                self.delegate?.editList(id: self.receiveID!, category: categoryEditedText, content: todoContentEditedText)
             }
         }
         
