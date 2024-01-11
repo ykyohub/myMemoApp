@@ -12,13 +12,13 @@
         <!--My To do List-->
         <scene sceneID="EIe-W6-LgP">
             <objects>
-                <tableViewController storyboardIdentifier="showAddToDo" id="qfU-fV-2Er" customClass="TableViewController" customModule="myMemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="showMyToDo" id="qfU-fV-2Er" customClass="TableViewController" customModule="myMemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ZQ1-v3-0k1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="HRM-cR-NJe" customClass="myCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="HRM-cR-NJe" customClass="AddListTableViewCell" customModule="myMemoApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HRM-cR-NJe" id="Hqy-au-lrw">
@@ -32,6 +32,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="isCompletedSwitch" destination="UiK-fP-yJF" id="azb-7K-t5R"/>
                                     <segue destination="mK2-Di-Wxd" kind="show" identifier="sgDetail" id="sNt-KS-e6Y"/>
                                 </connections>
                             </tableViewCell>
@@ -62,12 +63,12 @@
         <!--Detail To do-->
         <scene sceneID="7K2-nt-Rk2">
             <objects>
-                <viewController id="mK2-Di-Wxd" customClass="DetailViewController" customModule="myMemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showDetailToDo" id="mK2-Di-Wxd" customClass="DetailViewController" customModule="myMemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LiA-Ga-2xi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYe-pH-7mu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="카테고리" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYe-pH-7mu">
                                 <rect key="frame" x="16" y="108" width="343" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.90625590577245319" green="0.91478066682175951" blue="0.94035494996967861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -75,7 +76,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plc-BN-7sT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="내용" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plc-BN-7sT">
                                 <rect key="frame" x="16" y="156" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99059367354581462" green="1" blue="0.67129538653418142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -105,24 +106,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5nt-yL-Tjp">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="카테고리를 입력해주세요. . ." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5nt-yL-Tjp">
                                 <rect key="frame" x="16" y="117" width="343" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="addTitleTextField:" destination="f76-0i-ISO" eventType="editingDidEnd" id="Kqs-nB-7Z2"/>
-                                    <action selector="titleTextField:" destination="f76-0i-ISO" eventType="editingDidEnd" id="Ack-5J-kOT"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="내용을 입력해주세요. . ." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kuT-a7-JPe">
                                 <rect key="frame" x="16" y="159" width="343" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="contentTextField:" destination="f76-0i-ISO" eventType="editingDidEnd" id="W3U-1g-JJz"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dGB-oY-wQv"/>
@@ -145,12 +139,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addContentTextField" destination="kuT-a7-JPe" id="qw6-Wu-fXW"/>
-                        <outlet property="addTitleTextField" destination="5nt-yL-Tjp" id="jIW-RV-WHz"/>
+                        <outlet property="addCategoryTextField" destination="5nt-yL-Tjp" id="GuP-MG-0Al"/>
+                        <outlet property="addContentTextField" destination="kuT-a7-JPe" id="Hmi-p6-Y5h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OkS-As-db4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="f76-0i-ISO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2426" y="-288"/>
         </scene>

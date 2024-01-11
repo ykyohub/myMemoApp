@@ -8,17 +8,17 @@
 import Foundation
 import UIKit
 
-class AddListTableViewCell: UITableViewCell, UITableViewDelegate {
+class AddListTableViewCell: UITableViewCell {
     
-    var addTitleClosure: ((_ title: String) -> ())?
-    var addContentClosure: ((_ title: String) -> ())?
+    @IBOutlet weak var isCompletedSwitch: UISwitch!
     
-    @IBAction func titleTextField(_ sender: UITextField) {
-        addTitleClosure?(sender.text!)
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
     
-    @IBAction func contentTextField(_ sender: UITextField) {
-        addContentClosure?(sender.text!)
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
-    
 }
