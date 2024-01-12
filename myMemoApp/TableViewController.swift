@@ -89,11 +89,9 @@ class TableViewController: UITableViewController, AddProtocol, EditProtocol {
             userDefault.set(encoded, forKey: "todoList")
         }
         listView.reloadData()
-        print("todoList.last.id : ", todoList.last?.id ?? "xxxxxx")
     }
     
     func editList(id: Int, category: String, content: String) {
-        print("editList 실행 !: ", id, category, content)
         
         todoList[id] = Todo(id: id, category: category, todoContent: content, iscompleted: false)
         setSection()
