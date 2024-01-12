@@ -108,19 +108,29 @@ class TableViewController: UITableViewController, AddProtocol, EditProtocol {
     
     //Edit 도중, AddViewController 로 이동시 편집중단
     override func viewWillDisappear(_ animated: Bool) {
-        // ? ? ? ? ? ? ?
         print(#function)
     }
     
     // 삭제 기능
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let category = Array(sections.keys)[indexPath.section]
             
-            userDefault.removeObject(forKey: "\(todoList[indexPath.row].id)")
-            sections[todoList[indexPath.row].category]?.remove(at: indexPath.row)
-            todoList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
+            if var todosInSection = sections[category] {
+                
+                let deletedTodo = todosInSection.remove(at: indexPath.row)
+                
+                if let indexInTodoList = todoList.firstIndex(where: { $0.id == deletedTodo.id }) {
+                    todoList.remove(at: indexInTodoList)
+                }
+                userDefault.removeObject(forKey: "\(deletedTodo.id)")
+                sections[category] = todosInSection
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                if todosInSection.isEmpty {
+                    sections.removeValue(forKey: category)
+                }
+                tableView.reloadData()
+            }
         }
     }
     
@@ -148,5 +158,4 @@ class TableViewController: UITableViewController, AddProtocol, EditProtocol {
         }
         return cell
     }
-    
 }
